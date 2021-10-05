@@ -9,3 +9,21 @@
 .ui.icon.header .icon {
   margin-bottom: 1.3rem;
 }
+
+/* UI Form Field */
+.ui.form .field {
+  width: 300px;
+  margin: 2rem auto;
+}
+
+/* UI Inverted Grey Button */
+.ui.inverted.grey.button {
+  color: #212121;
+}
+
+/* Media Query */
+@media screen and (max-width: 498px) {
+  .ui.form .field {
+    width: 200px;
+  }
+}
