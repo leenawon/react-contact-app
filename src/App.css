@@ -21,6 +21,35 @@
   color: #212121;
 }
 
+/* UI Celled List */
+.ui.celled.list {
+  height: 90vh;
+}
+
+.ui.celled.list > .item {
+  width: 300px;
+  height: 120px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.ui.celled.list > .item:first-child {
+  margin-top: 2rem;
+}
+
+/* UI List Item Content */
+.ui.list > .item > .content {
+  margin-top: 7px;
+}
+
+.ui.list > .item > i.icon {
+  color: #ff0000;
+  cursor: pointer;
+}
+
 /* Media Query */
 @media screen and (max-width: 498px) {
   .ui.form .field {
