@@ -13,6 +13,13 @@ function App() {
     setContacts([...contacts, {id: uuid_v4(), ...contact}]);
   }
 
+  function removeContact(id) {
+    const refreshContact = contacts.filter((contact) => {
+      return contact.id !== id;
+    });
+    setContacts(refreshContact);
+  }
+
   useEffect(() => {
     const getContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     
@@ -32,7 +39,7 @@ function App() {
       {/* Add Contact Component */}
       <AddContact addContact={addContact} />
       {/* Contact List Component */}
-      <ContactList contacts={contacts} />
+      <ContactList contacts={contacts} removeContact={removeContact} />
     </div>
   );
 }
