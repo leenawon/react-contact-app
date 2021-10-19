@@ -4,12 +4,15 @@ import SingleContact from './SingleContact';
 function ContactList(props) {
   const contacts = props.contacts;
 
+  function deleteContact(id) {
+    props.removeContact(id);
+  }
+
   return (
     <div className="ui celled list">
       <h4>연락처</h4>
       {contacts.map((contact) => (
-        // Single Contact Component
-        <SingleContact key={contact.id} contact={contact} />
+        <SingleContact key={contact.id} contact={contact} deleteContact={deleteContact} />
       ))}
     </div>
   )
