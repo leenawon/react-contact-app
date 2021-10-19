@@ -1,17 +1,15 @@
 import React from 'react';
+import SingleContact from './SingleContact';
 
-function ContactList({contacts}) {
+function ContactList(props) {
+  const contacts = props.contacts;
+
   return (
     <div className="ui celled list">
-      Contact List
+      <h4>연락처</h4>
       {contacts.map((contact) => (
-        <div className="item" key={contact.id}>
-          <div className="content">
-            <h4 className="header">{contact.name}</h4>
-            <span>{contact.email}</span>
-          </div>
-          <i className="trash alternate outline icon"></i>
-        </div>
+        // Single Contact Component
+        <SingleContact key={contact.id} contact={contact} />
       ))}
     </div>
   )
