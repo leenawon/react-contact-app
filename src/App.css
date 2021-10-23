@@ -21,6 +21,16 @@
   color: #212121;
 }
 
+/* UI Basic Button */
+.ui.basic.button {
+  margin: 2rem 0 1rem;
+}
+
+.ui.basic.button:hover {
+  background-color: #e0e0e0 !important;
+  color: #212121 !important;
+}
+
 /* UI Celled List */
 .ui.celled.list {
   height: 90vh;
