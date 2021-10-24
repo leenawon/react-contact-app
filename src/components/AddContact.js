@@ -23,6 +23,7 @@ function AddContact(props) {
     setName("");
     setEmail("");
     props.addContact(contact);
+    props.history.push("/");
   }
 
   return (
