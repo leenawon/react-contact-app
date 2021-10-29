@@ -18,12 +18,12 @@ function AddContact(props) {
     e.preventDefault();
     if(name === "" || email === "") {
       alert('모든 항목을 입력해주세요!');
+    } else {
+      setName("");
+      setEmail("");
+      props.addContact(contact);
+      props.history.push("/");
     }
-
-    setName("");
-    setEmail("");
-    props.addContact(contact);
-    props.history.push("/");
   }
 
   return (
