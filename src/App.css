@@ -33,7 +33,7 @@
 
 /* UI Celled List */
 .ui.celled.list {
-  height: 90vh;
+  height: auto;
 }
 
 .ui.celled.list > .item {
@@ -50,14 +50,32 @@
   margin-top: 2rem;
 }
 
+.ui.celled.list > .item:last-child {
+  border-bottom: none;
+}
+
+/* Ui Search */
+.ui.search {
+  margin-bottom: 2rem;
+}
+
 /* UI List Item Content */
+.ui.list:last-child {
+  padding-bottom: 2rem;
+}
+
 .ui.list > .item > .content {
   margin-top: 7px;
 }
 
-.ui.list > .item > i.icon {
-  color: #ff0000;
+/* UI List Item Icons */
+.ui.list > .item > .icons > i.icon {
   cursor: pointer;
+}
+
+.ui.list > .item > .icons > i.trash {
+  color: #ff0000;
+  margin-left: 0.5rem;
 }
 
 /* Media Query */
