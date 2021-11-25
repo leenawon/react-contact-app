@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { v4 as uuid_v4 } from 'uuid';
+import contactsApi from './api/contactsApi';
 import './App.css';
 import AddContact from './components/AddContact';
 import ContactDetail from './components/ContactDetail';
@@ -8,31 +9,37 @@ import ContactList from './components/ContactList';
 import Header from './components/Header';
 
 function App() {
-  const LOCAL_STORAGE_KEY = 'contacts';
   const [contacts, setContacts] = useState([]);
 
-  function addContact(contact) {
-    setContacts([...contacts, {id: uuid_v4(), ...contact}]);
+  async function addContact(contact) {
+    const request = { id: uuid_v4(), ...contact };
+    const response = await contactsApi.post('/contacts', request);
+    setContacts([...contacts, response.data]);
   }
 
-  function removeContact(id) {
+  async function removeContact(id) {
+    await contactsApi.delete(`/contacts/${id}`);
     const refreshContact = contacts.filter((contact) => {
       return contact.id !== id;
     });
     setContacts(refreshContact);
   }
 
-  useEffect(() => {
-    const getContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    
-    if(getContacts) {
-      setContacts(getContacts);
-    }
-  }, []);
+  // get Contacts From Contacts Api
+  async function getContactsFromApi() {
+    const response = await contactsApi.get("/contacts");
+    return response.data;
+  }
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
-  }, [contacts]);
+    const getContacts = async () => {
+      const allContacts = await getContactsFromApi();
+      if(allContacts) {
+        setContacts(allContacts);
+      }
+    }
+    getContacts();
+  }, []);
 
   return (
     <div className="ui container">
@@ -44,6 +51,7 @@ function App() {
           <Route exact path="/" render={(props) => (<ContactList {...props} contacts={contacts} removeContact={removeContact} />)} /> 
           {/* Add Contact Component */}
           <Route path="/add-contact" render={(props) => <AddContact {...props} addContact={addContact} />} />
+          {/* Contact Detail Component */}
           <Route path="/contact/:id" component={ContactDetail} />
         </Switch>
       </BrowserRouter>
