@@ -7,6 +7,7 @@ import AddContact from './components/AddContact';
 import ContactDetail from './components/ContactDetail';
 import ContactList from './components/ContactList';
 import Header from './components/Header';
+import UpdateContact from './components/UpdateContact';
 
 function App() {
   const [contacts, setContacts] = useState([]);
@@ -15,6 +16,14 @@ function App() {
     const request = { id: uuid_v4(), ...contact };
     const response = await contactsApi.post('/contacts', request);
     setContacts([...contacts, response.data]);
+  }
+
+  async function updateContact(contact) {
+    const response = await contactsApi.put(`/contacts/${contact.id}`, contact);
+    const {id} = response.data;
+    setContacts(contacts.map((contact) => {
+      return contact.id === id ? {...response.data} : contact;
+    }));
   }
 
   async function removeContact(id) {
@@ -51,6 +60,8 @@ function App() {
           <Route exact path="/" render={(props) => (<ContactList {...props} contacts={contacts} removeContact={removeContact} />)} /> 
           {/* Add Contact Component */}
           <Route path="/add-contact" render={(props) => <AddContact {...props} addContact={addContact} />} />
+          {/* Update Contact Component */}
+          <Route path="/update" render={(props) => <UpdateContact {...props} updateContact={updateContact} />} />
           {/* Contact Detail Component */}
           <Route path="/contact/:id" component={ContactDetail} />
         </Switch>
