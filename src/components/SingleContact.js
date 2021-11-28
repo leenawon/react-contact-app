@@ -20,7 +20,12 @@ function SingleContact(props) {
           <span>{email}</span>
         </Link>
       </div>
-      <i className="trash alternate outline icon" onClick={deleteButtonHandler}></i>
+      <div className="icons">
+        <Link to={{pathname: `/update`, state:{contact: props.contact}}}>
+          <i className="edit alternate outline icon"></i>
+        </Link>
+        <i className="trash alternate outline icon" onClick={deleteButtonHandler}></i>
+      </div>
     </div>
   )
 }
