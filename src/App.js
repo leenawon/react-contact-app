@@ -36,6 +36,18 @@ function App() {
     setContacts(refreshContact);
   }
 
+  function searchHandler(searchWord) {
+    setSearch(searchWord);
+    if(searchWord !== "") {
+      const searchContacts = contacts.filter((contact) => {
+        return Object.values(contact).join(" ").toLowerCase().includes(searchWord.toLowerCase());
+      });
+      setSearchResult(searchContacts);
+    } else {
+      setSearchResult(contacts);
+    }
+  }
+
   // get Contacts From Contacts Api
   async function getContactsFromApi() {
     const response = await contactsApi.get("/contacts");
