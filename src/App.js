@@ -71,7 +71,7 @@ function App() {
         <Header />
         <Switch>
           {/* Contact List Component */}
-          <Route exact path="/" render={(props) => (<ContactList {...props} contacts={search.length < 1 ? contacts : searchResult} removeContact={removeContact} search={search} />)} /> 
+          <Route exact path="/" render={(props) => (<ContactList {...props} contacts={search.length < 1 ? contacts : searchResult} removeContact={removeContact} search={search} searchWord={searchHandler} />)} /> 
           {/* Add Contact Component */}
           <Route path="/add-contact" render={(props) => <AddContact {...props} addContact={addContact} />} />
           {/* Update Contact Component */}
