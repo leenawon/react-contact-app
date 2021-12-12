@@ -1,0 +1,29 @@
+{
+  "contacts": [
+    {
+      "id": "b8b9b6f1-38bc-41f3-842d-d7f0a20f2ce1",
+      "name": "이나원",
+      "email": "nawon5154@gmail.com"
+    },
+    {
+      "id": "d7a20738-b8b6-40ce-8a00-458393d4f295",
+      "name": "다오니",
+      "email": "dawon@example.com"
+    },
+    {
+      "id": "7c51d2af-2d78-4a27-91c9-e1a714b7cf7a",
+      "name": "갱호리",
+      "email": "kyoungho@example.com"
+    },
+    {
+      "id": "cab32f84-110f-450d-b9cd-a52bc00af35f",
+      "name": "smile",
+      "email": "smile@example.com"
+    },
+    {
+      "id": "94a7ad71-dfae-4298-b180-c62ebe78393b",
+      "name": "happy",
+      "email": "happy@gmail.com"
+    }
+  ]
+}
